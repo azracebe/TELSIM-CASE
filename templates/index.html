@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>KKTC-Telsim-Case</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 50px;}
+
+        form {
+            text-align: center; }
+
+        button {
+            padding: 10px 55px;
+            background: #1722b7;
+            color: white;
+            }
+
+        .weather {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #2d1c1c;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hava Durumu Kayıt Sistemi</h1>
+
+    <form method="POST">
+        <button type="submit">Veriyi Çek ve Kaydet</button>
+    </form>
+
+    {% if message %}
+        <p><strong>{{ message }}</strong></p>
+    {% endif %}
+
+    {% if record %}
+        <div class="weather">
+            <h2>Son Kayıt:</h2>
+            <p><strong>Şehir:</strong> {{ record['city'] }}</p>
+            <p><strong>Sıcaklık:</strong> {{ record['temp'] }}°C</p>
+            <p><strong>Durum:</strong> {{ record['condition'] }}</p>
+            <p><strong>Kayıt Zamanı:</strong> {{ record['last_updated'] }}</p>
+        </div>
+    {% else %}
+        <p>Henüz kayıt yok.</p>
+    {% endif %}
+</body>
+</html>
